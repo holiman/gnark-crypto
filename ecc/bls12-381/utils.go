@@ -22,8 +22,8 @@ func fuzzCofactorOfG1(f fp.Element) G1Jac {
 	return res
 }
 
-func GeneratePointNotInG2(f fptower.E2) G2Jac {
-	return fuzzCofactorOfG2(f)
+func GeneratePointNotInG2(f1, f2 fp.Element) G2Jac {
+	return fuzzCofactorOfG2(E2{f1, f2})
 }
 
 func fuzzCofactorOfG2(f fptower.E2) G2Jac {
