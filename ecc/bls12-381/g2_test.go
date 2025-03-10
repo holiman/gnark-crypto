@@ -848,21 +848,6 @@ func BenchmarkG2AffineDouble(b *testing.B) {
 		a.Double(&a)
 	}
 }
-func fuzzCofactorOfG2(f fptower.E2) G2Jac {
-	var res, jac G2Jac
-	aff := MapToCurve2(&f)
-	g2Isogeny(&aff)
-	jac.FromAffine(&aff)
-	// ψ(p)-[x₀]P = [r]p
-	res.mulBySeed(&jac)
-	jac.psi(&jac)
-	res.AddAssign(&jac)
-	return res
-}
-
-func GeneratePointNotInG2(f fptower.E2) G2Jac {
-	return fuzzCofactorOfG2(f)
-}
 
 func fuzzG2Jac(p *G2Jac, f fptower.E2) G2Jac {
 	var res G2Jac
